@@ -41,4 +41,3 @@ lua << eof
 		python = {venvPath = "~/venvs"},
 		venv = "user",
 	}
-	require('swenv.api').pick_venv()

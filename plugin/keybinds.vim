@@ -94,24 +94,3 @@ imap <expr> <TAB> pumvisible() ? "\<C-Space>" : "\<TAB>"
 
 " Cycles backwards on shift tab
 imap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:GetRoot()
-	" Assumes root will always have .git. This could be improved
-	" let l:dir = finddir('.git/', expand('%:p:h').';')
-	let l:dir = finddir('./.git/', './;')
-	if l:dir == ""
-		let l:dir = finddir('.git', './;')
-	endif
-	let l:dir = split(l:dir, "/")
-	let l:dir = join(l:dir[0:-2], "/")
-	:echo l:dir
-	return l:dir
-endfunc
-
-function! s:SwitchEnv()
-	let l:dir = s:GetRoot()
-	let l:cache=findfile(l:dir . "/.cachedVenv", './')
-	:echo l:cache
-endfunc
-
-command! Venv call s:SwitchEnv()
