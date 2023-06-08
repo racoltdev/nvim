@@ -8,7 +8,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'neovim/nvim-lspconfig'
 
 " venv picker
-Plug 'AckslD/swenv.nvim'
+Plug 'racoltdev/swenv.nvim'
 
 " Lua tools for swenv
 Plug 'nvim-lua/plenary.nvim'
@@ -22,6 +22,16 @@ lua << eof
 	require("swenv").setup({
 		venvs_path = vim.fn.expand('~/venvs')
 	})
+	local swenv = require('swenv.api')
+	local api = vim.api
+	api.nvim_create_autocmd(
+		"VimEnter",
+		{
+	 		pattern = {"*.py"},
+	 		command = [[lua require('swenv.api').select_cached()]]
+	 	}
+	)
+
 	local lspconf=require('lspconfig')
 	local python_root_files = {
 		'WORKSPACE', -- added for Bazel; items below are from default config
