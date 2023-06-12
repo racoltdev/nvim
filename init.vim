@@ -1,4 +1,4 @@
-let g:python3_host_prog='/home/andy/.venv/bin/python'
+let g:python3_host_prog='/home/andy/venvs/usr/bin/python'
 
 call plug#begin()
 
@@ -19,19 +19,6 @@ Plug 'stevearc/dressing.nvim'
 call plug#end()
 
 lua << eof
-	require("swenv").setup({
-		venvs_path = vim.fn.expand('~/venvs')
-	})
-	local swenv = require('swenv.api')
-	local api = vim.api
-	api.nvim_create_autocmd(
-		"VimEnter",
-		{
-	 		pattern = {"*.py"},
-	 		command = [[lua require('swenv.api').select_cached()]]
-	 	}
-	)
-
 	local lspconf=require('lspconfig')
 	local python_root_files = {
 		'WORKSPACE', -- added for Bazel; items below are from default config
@@ -49,5 +36,18 @@ lua << eof
 		root_dir = lspconf.util.root_pattern(unpack(python_root_files)),
 		-- These lines are only needed if I stop using swenv
 		python = {venvPath = "~/venvs"},
-		venv = "user",
+		venv = "usr",
 	}
+
+	require("swenv").setup({
+		venvs_path = vim.fn.expand('~/venvs')
+	})
+	local swenv = require('swenv.api')
+	local api = vim.api
+	api.nvim_create_autocmd(
+		"BufEnter",
+		{
+	 		pattern = {"*.py"},
+	 		command = [[lua require('swenv.api').select_cached()]]
+	 	}
+	)

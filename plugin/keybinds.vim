@@ -1,6 +1,11 @@
 " Clear search highlighting
 nnoremap <esc><esc> :noh<return>
 
+function! s:ChangeVenv()
+	lua require("swenv.api").pick_venv()
+endfunc
+command! ChangeVenv call s:ChangeVenv()
+
 function! s:CallTest()
 	if (&filetype == "python")
 		:PyTest file
