@@ -8,7 +8,7 @@ command! ChangeVenv call s:ChangeVenv()
 
 function! s:CallTest()
 	if (&filetype == "python")
-		:PyTest file
+		:Pytest file -v
 	else
 		echo "File type not configured"
 	endif
@@ -57,6 +57,8 @@ function! CloseBracket()
 			let l:returnChar = ">"
 		elseif (l:currChar == "\"")
 			let l:returnChar = "\""
+		elseif (l:currChar == "\'")
+			let l:returnCHar = "\'"
  		else
  			let l:returnChar = l:currChar
 		endif
@@ -99,3 +101,9 @@ imap <expr> <TAB> pumvisible() ? "\<C-Space>" : "\<TAB>"
 
 " Cycles backwards on shift tab
 imap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+lua << eof
+	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+	vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+
