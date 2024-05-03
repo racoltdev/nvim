@@ -51,4 +51,3 @@ lua << eof
 		python = {venvPath = "./"},
 		venv = ".venv",
 	}
-
