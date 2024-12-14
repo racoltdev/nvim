@@ -16,19 +16,40 @@ Plug 'nvim-lua/plenary.nvim'
 " menu tool for swenv
 Plug 'stevearc/dressing.nvim'
 
+" LSP tool I only use for C#
+Plug 'OmniSharp/omnisharp-vim'
+
+" Linter tool that works with omnisharp. I only use for C#
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
+" default value
+" let g:OmniSharp_server_stdio = 1
+" not needed if dotnet installed
+let g:OmniSharp_server_use_mono = 1
+" Shouldn't be needed if dotnet installed
+let g:OmniSharp_server_use_net6 = 1
+
+" Only run linters I explicitly enable
+let g:ale_linters_explicit = 1
+
+" Enable linting only for csharp
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
+
 lua << eof
-	require("swenv").setup({
-		venvs_path = vim.fn.expand('~/venvs')
-	})
-	local swenv = require('swenv.api')
+--	swenv = require("swenv")
+--	swenv.setup({
+--		venvs_path = vim.fn.expand('~/venvs')
+--	})
 	local api = vim.api
 	api.nvim_create_autocmd(
-		"BufEnter",
+		"VimEnter",
 		{
 	 		pattern = {"*.py"},
-	 		command = [[lua require('swenv.api').select_cached()]]
+	 		command = [[lua require('swenv.api').init()]]
 	 	}
 	)
 
@@ -46,8 +67,17 @@ lua << eof
 	}
 	lspconf.pyright.setup {
 		on_attach = on_attach,
-		root_dir = lspconf.util.root_pattern(unpack(python_root_files)),
+		root_dir = lspconf.util.root_pattern(unpack(python_root_files))
 		-- These lines are only needed if I stop using swenv
-		python = {venvPath = "./"},
-		venv = ".venv",
+		-- python = {venvPath = "./"},
+		-- venv = ".venv",
+	}
+--	lspconf.csharp_ls.setup{
+--		-- command = 	{ "/home/andy/.dotnet/tools/csharp-ls" },
+--		-- filetypes = { "cs" },
+--	}
+	lspconf.omnisharp.setup{
+		on_attach = on_attach,
+		capabilities = capabilities,
+		cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
 	}
