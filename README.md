@@ -2,7 +2,7 @@
 My full configuration. Copy if you like.
 
 Requirements: 
-  - nvim: v0.8+
+  - nvim: v0.9+
   - vim-plug: https://github.com/junegunn/vim-plug
   - pyright: recommended to install via pip
 
