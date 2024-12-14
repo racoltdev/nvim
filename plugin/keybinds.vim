@@ -102,8 +102,18 @@ imap <expr> <TAB> pumvisible() ? "\<C-Space>" : "\<TAB>"
 " Cycles backwards on shift tab
 imap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" Go to definition with omnisharp/Csharp
+autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_find_implementations)
+
+" Preview definition with omnsiharp/Csharp
+autocmd FileType cs nmap <silent> <buffer> <Leader>pd <Plug>(omnisharp_preview_implementation)
+
+" Go back to previous cursor position before a jump
+map <C-b> ``
+
 lua << eof
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 	vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+	
 
