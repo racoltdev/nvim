@@ -58,7 +58,7 @@ function! CloseBracket()
 		elseif (l:currChar == "\"")
 			let l:returnChar = "\""
 		elseif (l:currChar == "\'")
-			let l:returnCHar = "\'"
+			let l:returnChar = "\'"
  		else
  			let l:returnChar = l:currChar
 		endif
