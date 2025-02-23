@@ -38,6 +38,7 @@ inoremap <A-BS> <C-\><C-O>dB
 inoremap <C-=> \R
 
 " Auto complete using parenthesis
+" TODO for CloseLine, insert bracket before semicolon if it exists
 function! CloseBracket()
 	if (col('.') > 2)
 		let l:currChar = strcharpart(getline('.')[col('.') - 3:], 0, 2)
@@ -72,7 +73,13 @@ endfunc
 
 function! CloseLine()
 	let l:closing = CloseBracket()
-	return "\<Esc>A" . l:closing
+	let l:lastChar = getline('.')[len(getline('.')) - 1]
+	if (l:lastChar == ";")
+		let l:command = "\<Esc>$\<BS>a"
+	else
+		let l:command = "\<Esc>A"
+	endif
+	return l:command . l:closing
 endfunc
 
 inoremap <expr> <A-.> CloseWord()
