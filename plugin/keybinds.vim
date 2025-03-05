@@ -118,6 +118,9 @@ autocmd FileType cs nmap <silent> <buffer> <Leader>pd <Plug>(omnisharp_preview_i
 " Go back to previous cursor position before a jump
 map <C-b> ``
 
+" Remap copy to system clipboard
+vnoremap <C-c> "+y
+
 lua << eof
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
