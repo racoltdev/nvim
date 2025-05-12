@@ -6,6 +6,8 @@ function! s:my_colors_setup() abort
 "	NvimLightBlue
 "	NvimLightCyan
 
+	hi VirtText guifg=#e0d9f6  guibg=#002020 gui=italic
+
 	" Highlight extra whitespace
 	hi ExtraWhitespace guibg=#b51414
  	match ExtraWhitespace /\s\+$/
@@ -32,7 +34,7 @@ function! s:my_colors_setup() abort
 	hi Number guifg=#e31b64
 	hi Boolean guifg=#e31b64
 	hi Todo guibg=#37de37 guifg=#000000 gui=bold
-	hi LineNr guifg=#e0d9f6 gui=italic
+	hi LineNr guifg=#e0d9f6 guibg=#002020 gui=italic
 	hi LspCxxHlGroupNamespace guifg=#cfac13 gui=bold
 	hi LspCxxHlGroupEnumConstant guifg=#d442f5
 	hi NonText guifg=#e0d9f6
