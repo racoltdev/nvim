@@ -45,6 +45,11 @@ function! s:my_colors_setup() abort
 "	hi! def link @variable Identifier
 "	hi! def link cUserCont Identifier
 "	hi! def link pythonAttribute Identifier
+
+	hi DiagnosticSignError ctermfg=9 guifg=NvimLightRed guibg=#002020
+	hi DiagnosticSignWarn ctermfg=11 guifg=NvimLightYellow guibg=#002020
+	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError
+	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn
 endfunction
 
 augroup colorscheme_coc_setup
