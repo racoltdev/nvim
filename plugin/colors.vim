@@ -41,12 +41,19 @@ function! s:my_colors_setup() abort
 	hi Identifier guifg=#e8f5e8
 	hi Special guifg=#4cefef
 	hi Function guifg=#4cefef
-"	I was hoping these would change cpp and python variables too
-"	hi! def link @variable Identifier
-"	hi! def link cUserCont Identifier
-"	hi! def link pythonAttribute Identifier
+	hi csAccessModifier guifg=#dd60de
+	hi csModifier guifg=#dd60de
+	hi csClass guifg=#dd60de
+	hi Parameter guifg=NvimLightBlue
+	hi Field guifg=#b5b1e2
+	hi Class guifg=#d85390
 
-	hi csAccessModifier guifg=#4cefef
+	let g:OmniSharp_highlight_groups = {
+		\ 'ParameterName': 'Parameter',
+		\ 'FieldName': 'Field',
+		\ 'ClassName': 'Class'
+	\}
+
 	hi DiagnosticSignError ctermfg=9 guifg=NvimLightRed guibg=#002020
 	hi DiagnosticSignWarn ctermfg=11 guifg=NvimLightYellow guibg=#002020
 lua << EOF

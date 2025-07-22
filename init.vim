@@ -24,13 +24,8 @@ Plug 'dense-analysis/ale'
 
 call plug#end()
 
-" default value
-let g:OmniSharp_server_stdio = 1
-" not needed if dotnet installed
-" let g:OmniSharp_server_use_mono = 1
 " Shouldn't be needed if dotnet installed
 let g:OmniSharp_server_use_net6 = 1
-let g:OmniSharp_highlighting = 0
 
 " Only run linters I explicitly enable
 let g:ale_linters_explicit = 1
@@ -74,11 +69,3 @@ lua << eof
 		-- python = {venvPath = "./"},
 		-- venv = ".venv",
 	}
-
-	--local pid = vim.fn.getpid()
-	--lspconf.omnisharp.setup{
-	--	on_attach = on_attach,
-	--	--capabilities = capabilities,
-	--	--cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
-	--	cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
-	--}

@@ -1,7 +1,11 @@
 " Get highlighting group of character under cursor
 function! s:SynGroup()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+	if (&filetype == 'cs')
+		OmniSharpHighlightEcho
+	else
+    	let l:s = synID(line('.'), col('.'), 1)
+    	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+	endif
 endfun
 
 command! HiGroup call s:SynGroup()
