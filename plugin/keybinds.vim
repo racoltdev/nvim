@@ -145,8 +145,8 @@ map <A-Tab> <C-w><S-w>
 map <A-Esc> <C-w><C-w>
 
 " Window splitting
-map <C-r> <esc> :vsplit <Enter> <A-l> :e
-map <C-d> <esc> :split <Enter> <A-j> :e
+map <C-r> <esc> :vsplit <Enter> <C-l> :e
+map <C-d> <esc> :split <Enter> <C-j> :e
 
 " Set all windows to same size
 map == <C-w>=
