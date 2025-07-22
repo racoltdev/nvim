@@ -128,13 +128,17 @@ autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_find_implementati
 " Preview definition with omnsiharp/Csharp
 autocmd FileType cs nmap <silent> <buffer> <Leader>pd <Plug>(omnisharp_preview_implementation)
 
+autocmd FileType cs inoremap <buffer> <C-Space> <C-x><C-o>
+autocmd FileType cs inoremap <buffer> <expr> <TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+autocmd FileType cs inoremap <buffer> <expr> <Esc> pumvisible() ? "\<Space>\<C-u>" : "\<Esc>"
+
 " Go back to previous cursor position before a jump
 map <C-b> ``
 
 " Remap copy to system clipboard
 vnoremap <C-c> "+y
 
-map <S-r> redo
+map <S-r> :redo <Enter>
 
 " Navigate splits
 map <C-l> <C-w>l
