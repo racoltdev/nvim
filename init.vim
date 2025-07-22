@@ -17,10 +17,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'stevearc/dressing.nvim'
 
 " LSP tool I only use for C#
-" Plug 'OmniSharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim'
 
 " Linter tool that works with omnisharp. I only use for C#
- Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -79,5 +79,6 @@ lua << eof
 	--lspconf.omnisharp.setup{
 	--	on_attach = on_attach,
 	--	--capabilities = capabilities,
+	--	--cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
 	--	cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
 	--}

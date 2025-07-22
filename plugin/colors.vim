@@ -49,9 +49,24 @@ function! s:my_colors_setup() abort
 	hi csAccessModifier guifg=#4cefef
 	hi DiagnosticSignError ctermfg=9 guifg=NvimLightRed guibg=#002020
 	hi DiagnosticSignWarn ctermfg=11 guifg=NvimLightYellow guibg=#002020
-	sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticSignError
-	sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticSignWarn
-
+lua << EOF
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = '',
+			[vim.diagnostic.severity.WARN] = '',
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+			[vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+		},
+		texthl = {
+			[vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+			[vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+		},
+	},
+})
+EOF
 endfunction
 
 augroup colorscheme_coc_setup
