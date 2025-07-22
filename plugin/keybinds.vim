@@ -171,6 +171,10 @@ inoremap <S-A-b> <esc><S-b>i
 inoremap <A-b> <esc>bi
 inoremap <S-A-e> <esc><S-e>a
 inoremap <A-e> <esc>ea
+inoremap <A-h> <Left>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-l> <Right>
 
 lua << eof
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
