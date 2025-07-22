@@ -1,3 +1,5 @@
+let  $BASH_ENV = "$XDG_CONFIG_HOME/nvim/.bashrc"
+
 " Get highlighting group of character under cursor
 function! s:SynGroup()
 	if (&filetype == 'cs')
@@ -175,6 +177,8 @@ inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 inoremap <A-l> <Right>
+
+nnoremap ! :!
 
 lua << eof
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
