@@ -109,6 +109,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Insert newline without entering Insert
 nnoremap <A-CR> o<Esc>
 
+" TODO OmniSharp-vim binds <C-x><C-o> to run its completions. Make that run with this keybind instead
 " Ctrl Space opens completeion menu
 inoremap <C-Space> <C-n>
 
@@ -132,6 +133,40 @@ map <C-b> ``
 
 " Remap copy to system clipboard
 vnoremap <C-c> "+y
+
+map <S-r> redo
+
+" Navigate splits
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <A-Tab> <C-w><S-w>
+map <A-Esc> <C-w><C-w>
+
+" Window splitting
+map <C-r> <esc> :vsplit <Enter> <A-l> :e
+map <C-d> <esc> :split <Enter> <A-j> :e
+
+" Set all windows to same size
+map == <C-w>=
+
+" Fix for <A-w> not re-entering insert mode
+function! Skipword(w)
+	if (len(getline('.')) < 2)
+		return "\<esc>j^i"
+	else
+		return "\<esc>l".a:w."i"
+	endif
+endfunc
+
+" Jump words in insert mode
+inoremap <expr> <A-w> Skipword("w")
+inoremap <expr> <S-A-w> Skipword("W")
+inoremap <S-A-b> <esc><S-b>i
+inoremap <A-b> <esc>bi
+inoremap <S-A-e> <esc><S-e>a
+inoremap <A-e> <esc>ea
 
 lua << eof
 	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
