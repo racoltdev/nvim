@@ -17,19 +17,20 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'stevearc/dressing.nvim'
 
 " LSP tool I only use for C#
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 
 " Linter tool that works with omnisharp. I only use for C#
-Plug 'dense-analysis/ale'
+ Plug 'dense-analysis/ale'
 
 call plug#end()
 
 " default value
-" let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_stdio = 1
 " not needed if dotnet installed
-let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_use_mono = 1
 " Shouldn't be needed if dotnet installed
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_highlighting = 0
 
 " Only run linters I explicitly enable
 let g:ale_linters_explicit = 1
@@ -38,6 +39,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
+
 
 lua << eof
 --	swenv = require("swenv")
@@ -72,12 +74,10 @@ lua << eof
 		-- python = {venvPath = "./"},
 		-- venv = ".venv",
 	}
---	lspconf.csharp_ls.setup{
---		-- command = 	{ "/home/andy/.dotnet/tools/csharp-ls" },
---		-- filetypes = { "cs" },
---	}
-	lspconf.omnisharp.setup{
-		on_attach = on_attach,
-		capabilities = capabilities,
-		cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
-	}
+
+	--local pid = vim.fn.getpid()
+	--lspconf.omnisharp.setup{
+	--	on_attach = on_attach,
+	--	--capabilities = capabilities,
+	--	cmd = { "/home/andy/bin/omnisharp/OmniSharp", "--languageserver" , "--hostPID", tostring(pid) }
+	--}
