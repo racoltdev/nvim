@@ -11,10 +11,14 @@ function! s:my_colors_setup() abort
 	" Highlight extra whitespace
 	hi ExtraWhitespace guibg=#b51414
  	match ExtraWhitespace /\s\+$/
+
 	au BufWinEnter * match ExtraWhitespace /\s\+$/
+	au BufEnter * match ExtraWhitespace /\s\+$/
 	au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 	au InsertLeave * match ExtraWhitespace /\s\+$/
  	au BufWinLeave * call clearmatches()
+	au TermEnter * match none
+	au TermLeave * match ExtraWhitespace /\s\+$/
 
 	" Suggestions Box
 	hi Pmenu guifg=#e000ce guibg=#000000
