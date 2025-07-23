@@ -29,7 +29,12 @@ function! s:CallTest()
 endfunc
 command! Test call s:CallTest()
 
-command! Init e ~/.config/nvim/init.vim
+function! s:OpenConfig()
+	:e ~/.config/nvim/init.vim
+	:cd ~/.config/nvim/
+endfunc
+
+command! Config call s:OpenConfig()
 
 " Continue Comment block only on <Alt-Enter>
 function! CommentEnter()
