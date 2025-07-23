@@ -104,13 +104,10 @@ endfunc
 inoremap <expr> <A-.> CloseWord()
 inoremap <expr> <A-/> CloseLine()
 
-function! MoveSelection(start, end, dir)
-	:echom a:start . " " . a:end . " " . a:dir
-	return "yp"
-endfunc
-
 " Easily move a group of lines once selected
-vnoremap <expr> <A-j> MoveSelection("'<","'>", 1)
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Insert newline without entering Insert
@@ -160,7 +157,7 @@ map <C-r> <esc> :vsplit <Enter> <C-l> :e
 map <C-d> <esc> :split <Enter> <C-j> :e
 
 " Set all windows to same size
-map == <C-w>=
+noremap == <C-w>=
 
 " Fix for <A-w> not re-entering insert mode
 function! Skipword(w)
