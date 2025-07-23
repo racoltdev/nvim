@@ -35,7 +35,6 @@ let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
 
-
 lua << eof
 --	swenv = require("swenv")
 --	swenv.setup({
