@@ -6,7 +6,7 @@ let g:colors_name = 'raspberry'
 hi VirtText guifg=#e0d9f6  guibg=#002020 gui=italic
 
 " Highlight extra whitespace
-hi ExtraWhitespace guibg=#b51414
+hi ExtraWhitespace guibg=#b51346
 " Suggestions Box
 hi Pmenu guifg=#e000ce guibg=#000000
 hi PmenuSel guifg=#e00078 guibg=#2b272a
@@ -14,7 +14,7 @@ hi PmenuSBar guibg=#000000
 hi PmenuThumb guibg=#2b272a
 
 " Overall background
-hi Normal guibg=#170a17 guifg=#e8f5e8
+hi Normal guibg=#190d19 guifg=#e8f5e8
 
 " Syntax Highlighting
 hi Comment guifg=#e0d9f6 gui=italic
