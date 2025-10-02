@@ -49,22 +49,4 @@ lua << eof
 	 	}
 	)
 
-	local lspconf=require('lspconfig')
-	local python_root_files = {
-		'WORKSPACE', -- added for Bazel; items below are from default config
-		'pyproject.toml',
-		'setup.py',
-		'setup.cfg',
-		'requirements.txt',
-	 	'Pipfile',
-		'pyrightconfig.json',
-		'.git',
-		'.venv'
-	}
-	lspconf.pyright.setup {
-		on_attach = on_attach,
-		root_dir = lspconf.util.root_pattern(unpack(python_root_files))
-		-- These lines are only needed if I stop using swenv
-		-- python = {venvPath = "./"},
-		-- venv = ".venv",
-	}
+	vim.lsp.enable('pyright')
