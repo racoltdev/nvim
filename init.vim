@@ -22,6 +22,15 @@ Plug 'OmniSharp/omnisharp-vim'
 " Linter tool that works with omnisharp. I only use for C#
 Plug 'dense-analysis/ale'
 
+" UI / Layout tools for nvim-java
+Plug 'MunifTanjim/nui.nvim'
+
+" Backend tools for nvim-java
+Plug 'JavaHello/spring-boot.nvim'
+
+" LSP for java
+Plug 'nvim-java/nvim-java'
+
 call plug#end()
 
 " Shouldn't be needed if dotnet installed
@@ -49,4 +58,25 @@ lua << eof
 	 	}
 	)
 
+	require('java').setup({
+		java_debug_adapter = {
+	    	enable = false,
+			version = '0.58.2',
+	  	},
+	})
+
 	vim.lsp.enable('pyright')
+
+	vim.lsp.config('jdtls', {
+		settings = {
+			java = {
+				configuration = {
+					{
+						name = "JavaSE-17",
+						path = "/usr/lib/jvm/java-17-openjdk-amd64/",
+					}
+				}
+			}
+		}
+	})
+	vim.lsp.enable('jdtls')
